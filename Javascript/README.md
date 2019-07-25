@@ -77,6 +77,12 @@ let filmes = [
 console.log(typeof filmes); // object
 console.log(Array.isArray(filmes)); // true
 
+// Para adicionar um item no array
+filmes.push('Harry Potter')
+
+// acessa o item na posição zero no array
+console.log(filmes[0])
+
 let avenger = {
   horas: 2,
   diretores: "Anthony e Joe Russo",
@@ -86,6 +92,11 @@ let avenger = {
 
 console.log(typeof avenger); // object
 
+// acessar um atributo do objeto
+console.log(avenger.horas)
+
+// alterar
+avenger.horas = 3
 
 ```
 
@@ -125,18 +136,33 @@ console.log(`Olá ${nome} ${sobrenome}`);
 > If
 
 ```js
-const nome = "Joao"
+const info = {
+  name: 'Joao',
+  age: 28
+}
 
-if (nome === "Joao") {
+if (info.name === "Joao") {
   console.log(`é o Jão`);
 } else {
   console.log("Não é o Jão");
 }
 
-if (nome !== "Joao") {
+if (info.name !== "Joao") {
   console.log(`Não é o Jão`);
 } else {
   console.log("É o Jão");
+}
+
+if (info.name !== 'Joao' && info.age > 18) {
+  console.log('Maior de 18 e não é o joao')
+} else {
+  console.log('os outros')
+}
+
+if (info.name === 'Joao' || info.age <= 15) {
+  console.log('Menor que 15 anos ou se chama joão entra')
+} else {
+  console.log('Maior que 15 anos')
 }
 
 const valor = 5;
@@ -146,6 +172,8 @@ if (valor == "5") {
 } else {
   console.log("Não é 5");
 }
+
+
 ```
 
 > Ternário
@@ -161,6 +189,26 @@ console.log(isJohn)
 
 ```
 
+> Switch
+
+```js
+const dia = 2
+switch(dia)
+{
+  case 1:
+    alert('Hoje é domingo');
+    break;
+  case 2:
+    alert('Hoje é segunda');
+    break;
+  case 3:
+    alert('Hoje é terça');
+    break;
+  default:
+    alert('Hoje não é nem domingo, nem segunda, nem terça');
+    break
+}
+```
 ## 4. Funções
 
 > Função é um bloco de código para executar algum tipo de tarefa, exemplo função para somar
@@ -191,9 +239,57 @@ console.log(quadrado(3))
 ou utilizando ECMA6 , arrow function
 
 ```js
-// arro
+// arrow function
 const quadrado =  num => num * num  // return está implicito 
 
 console.log(quadrado(2))
 
 ```
+
+### Exercício:
+
+> Crie uma função que recebe por parâmetro a idade e retorne se é maior de idade ou não
+
+Resposta:
+
+```js
+
+const maiorIdade = idade => {
+  if(idade >= 18) {
+    return 'É maior de idade'
+  } else {
+    return 'Não é maior de idade'
+  }
+}
+
+console.log(maiorIdade(15));
+
+```
+
+
+## 4. Repetições
+
+> Laço de repetição usando FOR
+
+```js
+
+let contador;
+for(contador = 0; contador < 10; contador++)
+{
+  alert(contador);
+}
+
+// usando array
+let linguagens = ['Javascript', 'CSS', 'HTML']
+
+for (let i = 0; i < linguagens.length; i++) {
+  alert(linguagens[i])
+}
+
+```
+
+## Bonus
+
+Se der tempo
+
+Escopo de função
