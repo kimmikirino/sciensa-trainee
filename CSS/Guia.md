@@ -264,7 +264,7 @@ Responsável onde os itens do container estarão alinhados
 
 #### 5.2.1 justify-content
 
-Responsável onde os itens do container estarão alinhados
+Responsável alinhamento (direção) dos itens do container. A propriedade só funcionará caso os itens não ocupem todo o espaço do container. No caso por exemplo de itens com propriedade de flex ou grow o justify-content não serve para nada.
 
 > atributos: **_flex-start_**, **_flex-end_**, **_space-between_**, **_space-around_** e **_center_**
 
@@ -283,4 +283,43 @@ Responsável onde os itens do container estarão alinhados
   justify-content: flex-end;
   height: 400px;
 }
+```
+
+### 5.2.2 align-items
+
+Inicial é o alinhamento vertical dos itens do container, oq pode mudar caso você defina um flex-direction diferente do row.
+
+> atributos: **_stretch_**, **_flex-start_**, **_flex-end_**, **_center_** e **_baseline_**
+
+> O default é **_stretch_**, por isso aquele comportamento da espichado do fle-direction: column
+
+```CSS
+.flex-container {
+  display: flex;
+  background-color: blue;
+  flex-direction: column;
+  align-items: center;
+}
+```
+
+### 5.2.2 flex-grow
+
+Responsável pelo comportamento expansivo do item do container.
+
+> Este é um atributo do **ITEM** e não do container.
+
+> Pode-se usar o atalho **_flex:_** para utilizar o grow
+
+> O valor 0 configura o comportamento desligado, a partir do 1 em diante configura expansão.
+
+```CSS
+.flex-container > div {
+  background-color: #f1f1f1;
+  margin: 10px;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+<div style="flex-grow: 8">3</div>
+
 ```
