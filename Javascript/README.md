@@ -288,8 +288,40 @@ for (let i = 0; i < linguagens.length; i++) {
 
 ```
 
+> Mesmo laço usando while
+
+```js
+let linguagens = ['Javascript', 'CSS', 'HTML']
+let i = 0
+
+while (i < linguagens.length) {
+  alert(linguagens[i])
+  i++
+}
+
+```
+
+## Array - métodos
+
+> MAP
+
+
 ## Bonus
 
-Se der tempo
+Se der tempo: 
 
 Escopo de função
+
+> Hoisting
+
+Em JavaScript, toda variável é “elevada/içada” (hoisting) até o topo do seu contexto de execução. Esse mecanismo move as variáveis para o topo do seu escopo antes da execução do código.
+
+É por esse mesmo motivo que “é possível usar uma variável antes dela ter sido declarada”: em tempo de execução a variável será elevada (hoisting) e tudo funcionará corretamente.
+
+```js
+var exibeMensagem = function() {
+    mensagem = 'Sciensa';
+    console.log(mensagem);
+    var mensagem;
+}
+```
