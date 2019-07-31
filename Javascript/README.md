@@ -266,7 +266,6 @@ console.log(maiorIdade(15));
 
 ```
 
-
 ## 4. Repetições
 
 > Laço de repetição usando FOR
@@ -305,12 +304,31 @@ while (i < linguagens.length) {
 
 > MAP
 
+É um loop que itera sobre cada elemento do array e retorna um determinado valor.
+É necessário ter um return.
+
+Exemplo, converter dolar para reais, considerando o dolar a 3,70:
+
+```js
+const dolar = [100, 20, 50]
+const cotacao = 3.7
+let reais = dolar.map(  elem => {
+  return `R$ ${elem * cotacao}`;
+} ); 
+
+console.log(reais)
+
+```
+
+> Outros para estudar:
+
+filter, reduce, join, splice, concat, etc.
 
 ## Bonus
 
 Se der tempo: 
 
-Escopo de função
+> Escopo de função
 
 > Hoisting
 
@@ -325,3 +343,7 @@ var exibeMensagem = function() {
     var mensagem;
 }
 ```
+
+> Responsividade
+
+> Pode ser util: Pythontutor
