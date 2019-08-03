@@ -83,6 +83,12 @@ filmes.push('Harry Potter')
 // acessa o item na posição zero no array
 console.log(filmes[0])
 
+// remove último elemento do array
+filmes.pop()
+console.log(filmes)
+// mostra o tamanho do array
+console.log(filmes.length)
+
 let avenger = {
   horas: 2,
   diretores: "Anthony e Joe Russo",
@@ -99,6 +105,12 @@ console.log(avenger.horas)
 avenger.horas = 3
 
 ```
+
+### Lição de casa para Array
+
+> Existem muitos métodos úteis para utilizar com os Arrays. Por exemplo:
+
+join, shift, unshift, splice, concat, slice... entre outros
 
 ## 4. Operações básicas
 
@@ -266,7 +278,6 @@ console.log(maiorIdade(15));
 
 ```
 
-
 ## 4. Repetições
 
 > Laço de repetição usando FOR
@@ -288,8 +299,64 @@ for (let i = 0; i < linguagens.length; i++) {
 
 ```
 
+> Mesmo laço usando while
+
+```js
+let linguagens = ['Javascript', 'CSS', 'HTML']
+let i = 0
+
+while (i < linguagens.length) {
+  alert(linguagens[i])
+  i++
+}
+
+```
+
+## Array - métodos 
+
+> MAP
+
+É um loop que itera sobre cada elemento do array e retorna um determinado valor.
+É necessário ter um return.
+
+Exemplo, converter dolar para reais, considerando o dolar a 3,70:
+
+```js
+const dolar = [100, 20, 50]
+const cotacao = 3.7
+let reais = dolar.map(  elem => {
+  return `R$ ${elem * cotacao}`;
+} ); 
+
+console.log(reais)
+
+```
+
+> Outros para estudar:
+
+filter, reduce, join, splice, concat, etc.
+
+```
 ## Bonus
 
-Se der tempo
+Se der tempo: 
 
-Escopo de função
+### Hoisting
+
+Em JavaScript, toda variável é “elevada/içada” (hoisting) até o topo do seu contexto de execução. Esse mecanismo move as variáveis para o topo do seu escopo antes da execução do código.
+
+É por esse mesmo motivo que “é possível usar uma variável antes dela ter sido declarada”: em tempo de execução a variável será elevada (hoisting) e tudo funcionará corretamente.
+
+```js
+var exibeMensagem = function() {
+    mensagem = 'Sciensa';
+    console.log(mensagem);
+    var mensagem;
+}
+```
+
+> Escopo de função
+
+> Responsividade
+
+> Pode ser util: Pythontutor

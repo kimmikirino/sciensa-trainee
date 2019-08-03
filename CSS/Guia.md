@@ -300,7 +300,7 @@ referência: [Gui completo de Flexbox](https://origamid.com/projetos/flexbox-gui
 
 #### 6.2.1 flex-direction
 
-Responsável onde os itens do container estarão alinhados
+Responsável pela orientação que o alinhamento dos itens do container obedecerão
 
 > atributos: **_row_**, **_column_** e **_-reverse_**
 
