@@ -248,3 +248,69 @@ h6 {
 ```
 
 > Agora só replicar pros outros items
+
+## 3 - Vamos evoluir o Header
+
+```HTML
+<div class="header">
+  <div><img src="imgs/sciensa-logo-light.svg" /></div>
+  <div><h3>Movies List - Trainee</h3></div>
+</div>
+```
+
+```css
+.header {
+  height: 100px;
+  background-color: #191919;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 45px 0px;
+}
+```
+
+> Vamos colocar tudo de preto:
+
+```CSS
+body {
+  margin: 0px;
+  font-family: "Noto Sans";
+  /* background-color: #fffcf2; */
+  background-color: #191919;
+}
+```
+
+## Responsividade
+
+Sabe o que falta realmente? Responsividade. E para isso utilizaremos **_@media_**.
+
+```CSS
+@media only screen and (min-width: 1360px) {
+  .gallery-container {
+    width: 1360px;
+  }
+}
+
+@media only screen and (max-width: 1359px) {
+  .gallery-container {
+    width: 816px;
+  }
+}
+
+@media only screen and (max-width: 815px) {
+  .gallery-container {
+    width: 544px;
+  }
+}
+
+@media only screen and (max-width: 543px) {
+  .gallery-container {
+    width: 272px;
+  }
+
+  .right-header-title {
+    display: none;
+  }
+}
+```
