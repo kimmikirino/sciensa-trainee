@@ -4,25 +4,23 @@
 
 > O estilo é a definição de maior peso quando se fala em estilização do html
 
-```css
-<style>
-  .classe-teste {
-    background-color: red
-  }
-</style>
-
+```HTML
+<head>
+  <style>
+    .classe-teste {
+      background-color: red
+    }
+  </style>
+</head>
 <div class="classe-teste" style="width: 100px; height:100px; background-color:green;"> </div>
-
-
 ```
 
 ## 2. Pesos
 
 > id > classe > elemento
 
-```css
+```html
 <style>
-
   div {
     background-color: green;
     width: 100px;
@@ -30,25 +28,23 @@
   }
 
   .classe-teste {
-    background-color: red
+    background-color: red;
   }
 
   #id-teste {
-    background-color: yellow
+    background-color: yellow;
   }
 </style>
 
-<div class="classe-teste"> </div>
-
+<div class="classe-teste"></div>
 ```
 
 ## 3. Somando os Pesos
 
 > O Peso só é importante para sobrescrever o comportamento (propriedades), sendo assim, propriedades não sobrescritas terão comportamento definido por pesos anteriores ou pelo default
 
-```css
+```html
 <style>
-
   div {
     background-color: green;
     width: 100px;
@@ -71,8 +67,7 @@
   }
 </style>
 
-<div class="classe-teste"> </div>
-
+<div class="classe-teste"></div>
 ```
 
 ## 4. Cuidados
@@ -90,7 +85,7 @@
 
 > Espaço e Maior caracterizam trabalho em filhos. Logo podemos substituir isso:
 
-```css
+```html
 <style>
   .mae {
     background-color: green;
@@ -124,7 +119,7 @@
 
 > Por isso:
 
-```CSS
+```html
 <style>
   .mae {
     background-color: green;
@@ -155,9 +150,64 @@
 </div>
 ```
 
-## 5. Display
+## 5. Position
 
-### 5.1 Block, inline e none
+Position é o atributo para criar alternativas de posicionamento do elemento. Este atributo pode ter basicamente três valores: Static, Relative, Absolute, Fixed.
+
+- **Static:** Sem orientação para posição;
+- **Relative:** Ganha a atribuição de posicionamento levando em consideração seu posicionamento de acordo com outros elementos na tela;
+- **Absolute:** Ganha a atribuição de posicionamento levando em consideração seu posicionamento de acordo com o elemento pai;
+- **Fixed:** Ganha a atribuição de posicionamento se fixando na tela;
+
+Hands on pt1:
+
+```html
+<div
+  style="width: 100px; height: 100px; background-color: blue; position: relative"
+></div>
+<div
+  style="width: 100px; height: 100px; background-color: red; position: relative"
+></div>
+```
+
+Hands on pt2:
+
+```html
+<div
+  style="width: 100px; height: 100px; background-color: blue; position: relative; top: 30px; left: 20px;"
+></div>
+<div
+  style="width: 100px; height: 100px; background-color: red; position: relative"
+></div>
+```
+
+Hands on pt3:
+
+```html
+<div
+  style="width: 100px; height: 100px; background-color: blue; position: relative; "
+></div>
+<div
+  style="width: 100px; height: 100px; background-color: red; position: relative; top: 30px; left: 20px;"
+></div>
+```
+
+Hands on pt4 - absolute:
+
+```html
+<div
+  style="width: 100px; height: 100px; background-color: blue; position: relative; "
+></div>
+<div
+  style="width: 100px; height: 100px; background-color: red; position: absolute; top: 30px; left: 20px;"
+></div>
+```
+
+> **CUIDADO!** O position absolute só leva em consideração o elemento pai que não seja **static**
+
+## 6. Display
+
+### 6.1 Block, inline e none
 
 **_Block_** se comportam como caixas, logo possuem largura e altura, entretanto são como peixes Beta, vivem sozinho na sua linha
 
@@ -220,7 +270,7 @@ div {
 }
 ```
 
-### 5.2 Flex-Box
+### 6.2 Flex-Box
 
 **_Flex-Box_** foi criado devido as necessidades de layouts mais robustos, dinâmicos e simétricos.
 
@@ -248,7 +298,7 @@ referência: [Gui completo de Flexbox](https://origamid.com/projetos/flexbox-gui
 
 ```
 
-#### 5.2.1 flex-direction
+#### 6.2.1 flex-direction
 
 Responsável pela orientação que o alinhamento dos itens do container obedecerão
 
@@ -262,7 +312,7 @@ Responsável pela orientação que o alinhamento dos itens do container obedecer
 }
 ```
 
-#### 5.2.1 justify-content
+#### 6.2.2 justify-content
 
 Responsável alinhamento (direção) dos itens do container. A propriedade só funcionará caso os itens não ocupem todo o espaço do container. No caso por exemplo de itens com propriedade de flex ou grow o justify-content não serve para nada.
 
@@ -285,7 +335,7 @@ Responsável alinhamento (direção) dos itens do container. A propriedade só f
 }
 ```
 
-### 5.2.2 align-items
+### 6.2.3 align-items
 
 Inicial é o alinhamento vertical dos itens do container, oq pode mudar caso você defina um flex-direction diferente do row.
 
@@ -302,7 +352,7 @@ Inicial é o alinhamento vertical dos itens do container, oq pode mudar caso voc
 }
 ```
 
-### 5.2.2 flex-grow
+### 6.2.4 flex-grow
 
 Responsável pelo comportamento expansivo do item do container.
 

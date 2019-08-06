@@ -1,0 +1,89 @@
+body {
+  margin: 0px;
+  font-family: "Noto Sans";
+  /* background-color: #fffcf2; */
+  background-color: #191919;
+}
+
+.header {
+  height: 100px;
+  background-color: #191919;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 45px 0px;
+}
+
+hr {
+  border-bottom: 1px solid #2d2d2d;
+  margin: 0px 30px;
+}
+
+.gallery-container {
+  margin: 10px auto;
+  width: 1360px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media only screen and (min-width: 1360px) {
+  .gallery-container {
+    width: 1360px;
+  }
+}
+
+@media only screen and (max-width: 1359px) {
+  .gallery-container {
+    width: 816px;
+  }
+}
+
+@media only screen and (max-width: 815px) {
+  .gallery-container {
+    width: 544px;
+  }
+}
+
+@media only screen and (max-width: 543px) {
+  .gallery-container {
+    width: 272px;
+  }
+
+  .right-header-title {
+    display: none;
+  }
+}
+
+.gallery-container > div {
+  position: relative;
+  width: 250px;
+  height: 380px;
+  margin: 10px;
+  background-color: #363636;
+  border: 1px solid gray;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-legend {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  bottom: 0;
+  color: white;
+  padding: 10px;
+}
+
+.img-legend h4,
+h6 {
+  margin: 4px 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -83,6 +83,12 @@ filmes.push('Harry Potter')
 // acessa o item na posição zero no array
 console.log(filmes[0])
 
+// remove último elemento do array
+filmes.pop()
+console.log(filmes)
+// mostra o tamanho do array
+console.log(filmes.length)
+
 let avenger = {
   horas: 2,
   diretores: "Anthony e Joe Russo",
@@ -99,6 +105,12 @@ console.log(avenger.horas)
 avenger.horas = 3
 
 ```
+
+### Lição de casa para Array
+
+> Existem muitos métodos úteis para utilizar com os Arrays. Por exemplo:
+
+join, shift, unshift, splice, concat, slice... entre outros
 
 ## 4. Operações básicas
 
@@ -300,7 +312,7 @@ while (i < linguagens.length) {
 
 ```
 
-## Array - métodos
+## Array - métodos 
 
 > MAP
 
@@ -324,13 +336,12 @@ console.log(reais)
 
 filter, reduce, join, splice, concat, etc.
 
+```
 ## Bonus
 
 Se der tempo: 
 
-> Escopo de função
-
-> Hoisting
+### Hoisting
 
 Em JavaScript, toda variável é “elevada/içada” (hoisting) até o topo do seu contexto de execução. Esse mecanismo move as variáveis para o topo do seu escopo antes da execução do código.
 
@@ -343,6 +354,8 @@ var exibeMensagem = function() {
     var mensagem;
 }
 ```
+
+> Escopo de função
 
 > Responsividade
 
