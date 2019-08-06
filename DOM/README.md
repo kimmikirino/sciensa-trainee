@@ -81,5 +81,8 @@ Considerando o html abaixo:
 
   // é possivel chamar pelo nome da classe
   let myContainer = document.getElementsByClassName('container');
-
+  // retorna uma collection dos elementos filhos
+  console.log(myContainer)
+  //pega o primeiro elemento do array e sobrescreve todo conteudo
+  myContainer[0].innerText = 'sumiu'
 ```
