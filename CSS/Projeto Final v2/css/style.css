@@ -1,0 +1,161 @@
+body {
+  margin: 0px;
+  font-family: "Open Sans";
+  background-color: #fffcf2;
+}
+
+.fixed-menu {
+  height: 70px;
+  width: 100%;
+  background-color: rgba(97, 61, 155, 0.7);
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fixed-menu div {
+  margin: 10px;
+}
+
+.logo-content {
+  border-right: 1px solid white;
+  padding-left: 20px;
+  padding-right: 30px;
+}
+
+.header {
+  height: 450px;
+  background-image: url("../imgs/fundo_header.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #191919;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding-top: 70px;
+}
+
+.header h1 {
+  font-size: 65px;
+  margin: 5px;
+}
+
+.title-trainee {
+  font-weight: 300;
+}
+
+.gallery-container {
+  margin: 10px auto;
+  width: 1360px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media only screen and (min-width: 1360px) {
+  .gallery-container {
+    width: 1360px;
+  }
+}
+
+@media only screen and (max-width: 1359px) {
+  .gallery-container {
+    width: 816px;
+  }
+}
+
+@media only screen and (max-width: 815px) {
+  .gallery-container {
+    width: 544px;
+  }
+}
+
+@media only screen and (max-width: 543px) {
+  .gallery-container {
+    width: 272px;
+  }
+}
+
+.gallery-container > div {
+  position: relative;
+  width: 250px;
+  height: 380px;
+  margin: 10px;
+  background-color: #363636;
+  border: 1px solid gray;
+  border-radius: 5px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-legend {
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  color: white;
+
+  display: flex;
+}
+
+.text-legend {
+  flex: 4;
+  padding: 5px 0px;
+}
+
+.text-more-detail {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-more-detail button {
+  background-color: #e72f85;
+  border: 0px;
+  border-radius: 20px;
+  width: 37px;
+  height: 37px;
+  color: white;
+  font-size: 35px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.text-more-detail button:hover {
+  background-color: #e5bace;
+  color: #e72f85;
+}
+
+.text-more-detail button:focus {
+  outline: none;
+}
+
+.text-more-detail button span {
+  margin-top: -5px;
+  font-weight: 600;
+}
+
+.img-legend div {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.img-legend div h4,
+h6 {
+  margin: 4px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
