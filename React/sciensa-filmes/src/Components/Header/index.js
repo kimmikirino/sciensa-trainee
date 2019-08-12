@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from '../../assets/imgs/logo-sciensa-pb2.png'
+
 import './header.css'
 
 const Header = () => (
