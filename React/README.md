@@ -179,7 +179,7 @@ export default MovieItem
 
 ```js
 import filme1 from '../assets/imgs/filme1.jpg' 
-import filme2 from '../assets/imgs/filme2.jpg' -{+ addition 1 +}
+{+ import filme2 from '../assets/imgs/filme2.jpg' +}
 
 const movie = {
     id: 1,
