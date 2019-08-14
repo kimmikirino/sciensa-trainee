@@ -21,8 +21,34 @@ body {
 
 .logo-content {
   border-right: 1px solid white;
-  padding-left: 20px;
+  padding: 0px 30px;
+}
+
+.menu-content {
   padding-right: 30px;
+}
+
+.menu-content button {
+  background-color: transparent;
+  border: 0px;
+  border-radius: 20px;
+  width: auto;
+  height: 37px;
+  color: white;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-content button:hover {
+  background-color: #e72f85;
+}
+
+.menu-content button:focus {
+  outline: none;
 }
 
 .header {
@@ -30,7 +56,6 @@ body {
   background-image: url("../imgs/fundo_header.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-color: #191919;
   display: flex;
   color: white;
   justify-content: center;
@@ -68,17 +93,38 @@ body {
   .gallery-container {
     width: 816px;
   }
+  .header {
+    height: 225px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 50px;
+    margin: 5px;
+  }
 }
 
 @media only screen and (max-width: 815px) {
   .gallery-container {
     width: 544px;
   }
+
+  .header h1 {
+    font-size: 40px;
+    margin: 5px;
+  }
 }
 
 @media only screen and (max-width: 543px) {
   .gallery-container {
     width: 272px;
+  }
+  .header h1 {
+    font-size: 30px;
+    margin: 5px;
+  }
+
+  .menu-content button {
+    font-size: 12px;
   }
 }
 
@@ -98,7 +144,8 @@ body {
 }
 
 .img-legend {
-  width: 250px;
+  width: 100%;
+  height: 70px;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 5px;
   position: absolute;
@@ -110,17 +157,17 @@ body {
 
 .text-legend {
   flex: 4;
-  padding: 5px 0px;
+  padding: 12px 0px;
 }
 
-.text-more-detail {
+.more-details {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.text-more-detail button {
+.more-details button {
   background-color: #e72f85;
   border: 0px;
   border-radius: 20px;
@@ -134,16 +181,16 @@ body {
   cursor: pointer;
 }
 
-.text-more-detail button:hover {
+.more-details button:hover {
   background-color: #e5bace;
   color: #e72f85;
 }
 
-.text-more-detail button:focus {
+.more-details button:focus {
   outline: none;
 }
 
-.text-more-detail button span {
+.more-details button span {
   margin-top: -5px;
   font-weight: 600;
 }
