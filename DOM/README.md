@@ -73,6 +73,7 @@ Considerando o html abaixo:
 </html>
 ```
 
+criar arquivo index.js
 ```js
   let myBtn = document.getElementById('btn');
   console.log(myBtn)
@@ -86,3 +87,18 @@ Considerando o html abaixo:
   //pega o primeiro elemento do array e sobrescreve todo conteudo
   myContainer[0].innerText = 'sumiu'
 ```
+
+é possivel adicionar eventos também nos elementos, por exemplo Clique, mas não será possível abordar todas as funcionalidades
+
+Para criar um elemento novo utilizamos o document.createElement
+
+```js
+let spanText = document.createElement('span');
+spanText.innerText = 'Aqui é o texto'
+
+myContainer[0].append(spanText)
+
+```
+## Se der tempo
+
+falar de onclick

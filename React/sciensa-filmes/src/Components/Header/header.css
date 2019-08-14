@@ -1,0 +1,20 @@
+.fixed-menu {
+    height: 70px;
+    width: 100%;
+    background-color: rgba(97, 61, 155, 0.7);
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.fixed-menu div {
+    margin: 10px;
+}
+
+.logo-content {
+    border-right: 1px solid white;
+    padding-left: 20px;
+    padding-right: 30px;
+}

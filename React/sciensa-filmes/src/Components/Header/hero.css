@@ -1,0 +1,22 @@
+.header {
+  height: 450px;
+  background-image: url("../../assets/imgs/fundo_header.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #191919;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 70px;
+}
+  
+.header h1 {
+  font-size: 65px;
+  margin: 5px;
+}
+
+.title-trainee {
+  font-weight: 300;
+}
