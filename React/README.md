@@ -43,6 +43,16 @@ Copiar as imagens para a pasta asset
 Trocar o Title para Sciensa filmes
 Apagar o conteudo do App.css
 
+Adicionar no app.css
+
+```css
+body {
+  margin: 0px;
+  font-family: "Open Sans";
+  background-color: #fffcf2;
+}
+```
+
 ## Criar componente main dentro de page 
 
 mover o codigo que estava no app para o main
@@ -51,7 +61,7 @@ mover o codigo que estava no app para o main
 
 Dentro de components criar o header, copiar código previamente feito
 Fazer alterações de imagens
-
+Trocar o class pelo className
 importar o header dentro de page
 
 ## Criar componente hero
@@ -70,8 +80,8 @@ import './movieItem.css'
 const MovieItem = () => (
   <div>
     <img src={filme1} alt="capa filme1" />
-    <div class="img-legend">
-      <div class="text-legend">
+    <div className="img-legend">
+      <div className="text-legend">
         <h4>Nome Filme</h4>
         <h6>
           Breve descrição aqui asd asd as das da d as da sdas d asd as das
@@ -79,7 +89,7 @@ const MovieItem = () => (
           adasdasdas das da sd asd as da sd asdasdasd asdasd asdas dasda
             </h6>
       </div>
-      <div class="text-more-detail">
+      <div className="more-details">
         <button><span>+</span></button>
       </div>
     </div>
@@ -131,14 +141,14 @@ import Hero from '../Components/Header/Hero'
 import MovieItem from '../Components/MovieItem'
 import { movie } from '../mock'
 
-function Main() {
+const Main = () => {
   return (
     <>
       <header>
         <Header />
         <Hero />
       </header>
-      <div class="gallery-container">
+      <div className="gallery-container">
         <MovieItem movie={movie} />
       </div>
     </>
@@ -159,14 +169,14 @@ import './movieItem.css'
 const MovieItem = ({ movie }) => (
   <div>
     <img src={movie.image} alt={movie.title} />
-    <div class="img-legend">
-      <div class="text-legend">
+    <div className="img-legend">
+      <div className="text-legend">
         <h4>{ movie.title }</h4>
         <h6>
           { `Dirigido por: ${movie.director}` }
           </h6>
       </div>
-      <div class="text-more-detail">
+      <div className="text-more-detail">
         <button><span>+</span></button>
       </div>
     </div>
@@ -235,4 +245,138 @@ export { movie, movies }
 ## Fazer iteração do array de filmes no Main.js
 
 ```js
+import React from 'react'
+import './main.css'
+import Header from '../Components/Header'
+import Hero from '../Components/Header/Hero'
+import MovieItem from '../Components/MovieItem'
+import { movies } from '../mock'
+
+function Main() {
+  return (
+    <>
+      <header>
+        <Header />
+        <Hero />
+      </header>
+      <div className="gallery-container">
+        {
+          movies.map(movie => <MovieItem movie={movie} key={movie.id} />)
+        }
+      </div>
+    </>
+  );
+}
+
+export default Main;
+
 ```
+
+## Instalar o react router
+
+Realizar a instalação do react-router-dom
+
+```shell
+npm install --save react-router-dom
+```
+
+### Alterar o arquivo App.js para rotear
+
+```js
+import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Main from './Pages/Main'
+import './App.css'
+
+function App() {
+  return (
+    <Router>
+      <Route path="/" exact component={Main} />
+      <Route path="/main" exact component={Main} />
+    </Router>
+  );
+}
+
+export default App;
+
+```
+
+## Vamos criar uma visualização para que ao clicar no mais (detalhes do filme) abra uma pagina relativa ao filme
+
+Criar uma page nova MovieView.js
+
+Apenas para demonstração de rota
+
+```js
+import React from 'react'
+
+const MovieView = () => {
+    return (
+        <div>Teste</div>
+    )
+}
+
+export default MovieView
+```
+
+importar componente no app.js 
+
+```js
+import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Main from './Pages/Main'
+import MovieView from './Pages/MovieView'
+import './App.css'
+
+function App() {
+  return (
+    <Router>
+      <Route path="/" exact component={Main} />
+      <Route path="/filme" component={MovieView} />
+    </Router>
+  );
+}
+
+export default App;
+```
+
+### Adicionar no botão "MAIS" o link para redirecionamento de pagina dentro do MovieItem
+
+```js
+import React from 'react'
+import { Link } from "react-router-dom";
+import './movieItem.css'
+
+//usar destructuring e template literals
+const MovieItem = ({ movie }) => (
+  <div>
+    <img src={movie.image} alt={movie.title} />
+    <div className="img-legend">
+      <div className="text-legend">
+        <h4>{ movie.title }</h4>
+        <h6>
+          { `Dirigido por: ${movie.director}` }
+          </h6>
+      </div>
+      <div className="more-details">
+        <Link to="/filme">
+          <button><span>+</span></button>
+        </Link>
+      </div>
+    </div>
+  </div>
+)
+
+export default MovieItem
+```
+
+Vamos remover o traço que aparece embaixo do link, por ser um comportamento padrão da tag A
+
+> No app.css adicionar 
+
+```css
+a {
+  text-decoration: none;
+}
+```
+

@@ -3,3 +3,7 @@ body {
   font-family: "Open Sans";
   background-color: #fffcf2;
 }
+
+a {
+  text-decoration: none;
+}

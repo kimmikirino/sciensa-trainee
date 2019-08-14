@@ -5,14 +5,14 @@ import Hero from '../Components/Header/Hero'
 import MovieItem from '../Components/MovieItem'
 import { movies } from '../mock'
 
-function Main() {
+const Main = () => {
   return (
     <>
       <header>
         <Header />
         <Hero />
       </header>
-      <div class="gallery-container">
+      <div className="gallery-container">
         {
           movies.map(movie => <MovieItem movie={movie} key={movie.id} />)
         }

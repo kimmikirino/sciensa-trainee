@@ -4,9 +4,9 @@ import Logo from '../../assets/imgs/logo-sciensa-pb2.png'
 import './header.css'
 
 const Header = () => (
-  <div class="fixed-menu">
-    <div class="logo-content"><img src={Logo} /></div>
-    <div class="menu-content"><button>Adicionar Filme</button></div>
+  <div className="fixed-menu">
+    <div className="logo-content"><img src={Logo} alt="sciensa" /></div>
+    <div className="menu-content"><button>Adicionar Filme</button></div>
   </div>
 )
 
