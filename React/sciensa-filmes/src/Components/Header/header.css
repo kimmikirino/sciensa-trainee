@@ -18,3 +18,36 @@
     padding-left: 20px;
     padding-right: 30px;
 }
+
+.menu-content {
+    padding-right: 30px;
+}
+
+.menu-content button {
+    background-color: transparent;
+    border: 0px;
+    border-radius: 20px;
+    width: auto;
+    height: 37px;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+  
+.menu-content button:hover {
+    background-color: #e72f85;
+}
+  
+.menu-content button:focus {
+    outline: none;
+}
+
+@media only screen and (max-width: 543px) {
+    .menu-content button {
+      font-size: 12px;
+    }
+}

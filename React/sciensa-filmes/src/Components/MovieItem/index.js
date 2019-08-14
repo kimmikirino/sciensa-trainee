@@ -12,7 +12,7 @@ const MovieItem = ({ movie }) => (
           { `Dirigido por: ${movie.director}` }
           </h6>
       </div>
-      <div class="text-more-detail">
+      <div class="more-details">
         <button><span>+</span></button>
       </div>
     </div>

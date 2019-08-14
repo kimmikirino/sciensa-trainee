@@ -37,7 +37,7 @@ const movies = [
             id: 4,
             description: 'Drama'
         }],
-        director: 'Isaac Ezban',
+        director: 'Ruben Östlund',
         cast: [{
             id: 2,
             firstName: 'Claes',

@@ -6,7 +6,7 @@ import './header.css'
 const Header = () => (
   <div class="fixed-menu">
     <div class="logo-content"><img src={Logo} /></div>
-    <div>asdasdas</div>
+    <div class="menu-content"><button>Adicionar Filme</button></div>
   </div>
 )
 

@@ -41,6 +41,7 @@ Criar pasta Components, Pages e assets
 Copiar as fontes utilizadas para o index.html
 Copiar as imagens para a pasta asset
 Trocar o Title para Sciensa filmes
+Apagar o conteudo do App.css
 
 ## Criar componente main dentro de page 
 
@@ -217,7 +218,7 @@ const movies = [
             id: 4,
             description: 'Drama'
         }],
-        director: 'Isaac Ezban',
+        director: 'Ruben Östlund',
         cast: [{
             id: 2,
             firstName: 'Claes',

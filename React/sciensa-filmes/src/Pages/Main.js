@@ -3,7 +3,7 @@ import './main.css'
 import Header from '../Components/Header'
 import Hero from '../Components/Header/Hero'
 import MovieItem from '../Components/MovieItem'
-import { movie } from '../mock'
+import { movies } from '../mock'
 
 function Main() {
   return (
@@ -13,7 +13,9 @@ function Main() {
         <Hero />
       </header>
       <div class="gallery-container">
-        <MovieItem movie={movie} />
+        {
+          movies.map(movie => <MovieItem movie={movie} key={movie.id} />)
+        }
       </div>
     </>
   );
