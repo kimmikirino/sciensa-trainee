@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-.more-details button {
+.more-details a {
   background-color: #e72f85;
   border: 0px;
   border-radius: 20px;
@@ -34,19 +34,19 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
+  align-items: center;
 }
 
-.more-details button:hover {
+.more-details a:hover {
   background-color: #e5bace;
   color: #e72f85;
 }
 
-.more-details button:focus {
+.more-details a:focus {
   outline: none;
 }
 
-.more-details button span {
-  margin-top: -5px;
+.more-details a span {
   font-weight: 600;
 }
 

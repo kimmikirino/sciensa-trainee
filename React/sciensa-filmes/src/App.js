@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Route path="/" exact component={Main} />
-      <Route path="/filme" component={MovieView} />
+      <Route path="/filme" render={props => <MovieView {...props} />} />
     </Router>
   );
 }

@@ -14,8 +14,8 @@ const MovieItem = ({ movie }) => (
           </h6>
       </div>
       <div className="more-details">
-        <Link to="/filme">
-          <button><span>+</span></button>
+        <Link to="/filme" params={{ testvalue: "hello" }}>
+          <span>+</span>
         </Link>
       </div>
     </div>

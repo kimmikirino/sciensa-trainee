@@ -371,6 +371,7 @@ export default MovieItem
 ```
 
 Vamos remover o traço que aparece embaixo do link, por ser um comportamento padrão da tag A
+propriedade text-decoration
 
 > No app.css adicionar 
 
@@ -379,4 +380,48 @@ a {
   text-decoration: none;
 }
 ```
+
+Testar o botão +, vai abrir a rota /filme
+
+> Mudar no arquivo movieItem.css todos o button, mudar para a (como a tag A já faz o redirecionamento, não precisaremos mais do button)
+
+O botão ficará torto um pouco, vamos arrumar "live"", inspeciona e muda o flex e o margin negativo.
+
+```css
+.more-details a {
+  background-color: #e72f85;
+  border: 0px;
+  border-radius: 20px;
+  width: 37px;
+  height: 37px;
+  color: white;
+  font-size: 35px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+}
+
+.more-details a:hover {
+  background-color: #e5bace;
+  color: #e72f85;
+}
+
+.more-details a:focus {
+  outline: none;
+}
+
+.more-details a span {
+  font-weight: 600;
+}
+```
+
+### Alterar a página de detalhes do filme
+
+1. Adicionar o header
+2. Adicionar o hero
+3. Criar um componente de visualização do filme (dar um tempo para o pessoal tentar criar)
+4. Criar estrutura movieDetail
+5. Importar movie detail na page MovieView
 
