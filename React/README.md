@@ -884,3 +884,17 @@ export default MovieNew
 > Ajustar btn:last-child e max-width do page movieNew
 
 5. Escurecer header - Receber props para ficar darker
+
+./Header/index.js
+
+```js
+
+```
+
+./Header/header.css
+
+```css
+.fixed-menu.darker {
+    background-color: rgba(97, 61, 155, 1);
+}
+```

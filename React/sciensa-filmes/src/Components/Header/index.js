@@ -4,8 +4,8 @@ import Logo from '../../assets/imgs/logo-sciensa-pb2.png'
 
 import './header.css'
 
-const Header = () => (
-  <div className="fixed-menu">
+const Header = ({ className }) => (
+  <div className={`fixed-menu ${className || ''}`}>
     <div className="logo-content">
       <Link to='/'><img src={Logo} alt="sciensa" /></Link>
     </div>

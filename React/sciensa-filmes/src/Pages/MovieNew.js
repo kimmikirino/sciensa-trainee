@@ -6,8 +6,9 @@ import './movieNew.css'
 
 const MovieNew = () => {
   return (<div>
-    <Header></Header>
+    <Header className="darker"></Header>
     <div className="container new-top">
+      <LabelInput label="Importar Imagem" type="file"></LabelInput>
       <LabelInput label="Título" type="text"></LabelInput>
       <LabelInput label="Descrição" type="text"></LabelInput>
       <LabelInput label="Diretor" type="text"></LabelInput>
