@@ -711,4 +711,48 @@ const Header = () => (
 export default Header
 ```
 
-### 
+### Criar uma nova página para criação de um novo filme
+
+1. Cria uma nova página de edição com Header
+
+```js
+import React from 'react'
+import Header from '../Components/Header'
+
+const MovieNew = () => {
+    return (<div>
+        <Header></Header>
+        Teste
+    </div>)
+}
+
+export default MovieNew
+```
+
+2. Cria uma nova rota (app.js) e importa o Componente MovieNew e envolver com switch, pois irá respeitar a ordem, como no switch case
+
+```js
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Main from './Pages/Main'
+import MovieView from './Pages/MovieView'
+import MovieNew from './Pages/MovieNew'
+import './App.css'
+
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Main} />
+        <Route path="/filme/novo" component={MovieNew} />
+        <Route path="/filme/:id" component={MovieView} />
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
+
+```
+
+3. 
