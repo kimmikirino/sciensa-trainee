@@ -518,7 +518,7 @@ Alterar arquivo css para adicionar container, distanciar a imagem do texto e cor
   max-width: 1360px;
   margin: 0 auto;
   display: flex;
-  padding: 10px;
+  padding: 20px;
 }
 
 .movie-box {
@@ -564,6 +564,7 @@ Criar o css por partes de acordo com o layout
   font-weight: bold;
   text-transform: uppercase;
   margin-right: 10px;
+  background-color: white;
 }
 
 .btn-primary {
@@ -610,6 +611,68 @@ const MovieDetail = ({ movie }) => {
 }
 
 export default MovieDetail
+```
+Alterar o css
+
+```css
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  padding: 20px;
+}
+
+.movie-box {
+  margin: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie-box p {
+  margin: 10px 0;
+}
+
+.box-title {
+  color: #59398E;
+  font-size: 34px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.btn-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+11. Responsividade
+
+movieDetail.css
+Adição de flex direction column e acima de 600 row
+movie-img  
+width 100%
+
+```css
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.movie-img {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    flex-direction: row;
+  }
+}
 ```
 
 ### 

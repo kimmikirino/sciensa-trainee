@@ -2,9 +2,19 @@
   max-width: 1160px;
   margin: 0 auto;
   display: flex;
-  padding: 10px;
+  padding: 20px;
+  flex-direction: column;
 }
 
+.movie-img {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .container {
+    flex-direction: row;
+  }
+}
 .movie-box {
   margin: 0 50px;
   display: flex;
