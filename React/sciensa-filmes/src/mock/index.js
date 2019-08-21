@@ -20,7 +20,8 @@ const movie = {
         lastName: 'Sánchez Parra',
         dateOfBirth: '01-01-1990'
     }],
-    image: filme1
+    image: filme1,
+    description: 'Em uma noite escura e chuvosa, um grupo de oitro estranhos fica preso em uma remota estação de ônibus esperando pela condução até a Cidade do México. Coisas estranhas começam a acontecer e eles ficam presos em uma luta pela sobrevivência e sanidade mental.'
 }
 
 const movies = [
@@ -44,7 +45,8 @@ const movies = [
             lastName: 'Bang',
             dateOfBirth: '01-01-1990'
         }],
-        image: filme2
+        image: filme2,
+        description: 'Um gerente de museu está usando de todas as armas possíveis para promover o sucesso de uma nova instalação e decide contratar uma empresa de relações públicas. Porém, isso acaba gerando consequências infelizes e um grande embaraço.'
     }
 ]
 

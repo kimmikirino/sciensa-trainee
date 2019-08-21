@@ -1,0 +1,19 @@
+.btn {
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  flex: 1;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: #E72F85;
+  color: white;
+}
+
+.btn-secondary {
+  border-color: #E72F85;
+  color: #E72F85;
+}

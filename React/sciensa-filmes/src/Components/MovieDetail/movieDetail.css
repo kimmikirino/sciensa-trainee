@@ -1,0 +1,31 @@
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  padding: 10px;
+}
+
+.movie-box {
+  margin: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie-box p {
+  margin: 10px 0;
+}
+
+.box-title {
+  color: #59398E;
+  font-size: 34px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+
+.btn-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
