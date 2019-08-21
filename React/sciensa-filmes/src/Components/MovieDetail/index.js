@@ -14,7 +14,7 @@ const MovieDetail = ({ movie }) => {
         <p><b>Artistas: </b>{movie.cast.map(artist => (
           <span key={artist.id}>{`${artist.firstName} ${artist.lastName}`} / </span>
         ))}</p>
-        <p><b>Ano de estréia: </b>{movie.director}</p>
+        <p><b>Ano de estréia: </b>{movie.releaseYear}</p>
         <p><b>Gêneros: </b>{movie.genres.map(genre => (
           <span key={genre.id}> {genre.description} /</span>
         ))}</p>

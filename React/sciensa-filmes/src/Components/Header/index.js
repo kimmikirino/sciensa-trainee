@@ -9,7 +9,7 @@ const Header = () => (
     <div className="logo-content">
       <Link to='/'><img src={Logo} alt="sciensa" /></Link>
     </div>
-    <div className="menu-content"><button>Adicionar Filme</button></div>
+    <div className="menu-content"><Link to='/filme/novo'><button>Adicionar Filme</button></Link></div>
   </div>
 )
 

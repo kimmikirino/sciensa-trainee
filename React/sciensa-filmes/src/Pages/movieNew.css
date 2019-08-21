@@ -1,0 +1,9 @@
+.new-top {
+  padding-top: 70px;
+  flex-direction: column;
+  max-width: 900px;
+}
+
+.new-top .btn-box {
+  margin-top: 30px;
+}

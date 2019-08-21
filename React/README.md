@@ -755,4 +755,132 @@ export default App;
 
 ```
 
-3. 
+3. Alteração do movieNew , criando input e depois extraindo para um componente
+
+```js
+import React from 'react'
+import Header from '../Components/Header'
+import LabelInput from '../Components/LabelInput'
+import './movieNew.css'
+
+const MovieNew = () => {
+  return (<div>
+    <Header></Header>
+    <div className="container new-top">
+      <div className="box-label">
+					<label>Titulo: </label>
+					<input type="text"></input>
+        </div>
+    </div>
+  </div>)
+}
+
+export default MovieNew
+```
+
+./movieNew.css
+```css
+.new-top {
+  padding-top: 70px;
+  flex-direction: column;
+}
+```
+
+./LabelInput.js
+```js
+import React from 'react'
+import './labelInput.css'
+
+const LabelInput = ({ label, ...props}) => {
+  return (
+    <div className="box-label">
+      <label>{label}: </label>
+      <input className="input-text" {...props} ></input>
+    </div>
+  )
+}
+
+export default LabelInput
+```
+
+./labelInput.css
+
+```css
+.box-label {
+  display: flex;
+  padding-top: 25px;
+  flex-direction: column;
+}
+
+.input-text {
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #613D9B;
+  border-radius: 10px;
+  height: 30px;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.input-text:focus, .input-text:active {
+  outline: none;
+  border: 2px solid #E72F85;
+}
+```
+
+> Arquivo MovieNew
+
+```js
+import React from 'react'
+import Header from '../Components/Header'
+import LabelInput from '../Components/LabelInput'
+import './movieNew.css'
+
+const MovieNew = () => {
+  return (<div>
+    <Header></Header>
+    <div className="container new-top">
+      <LabelInput label="Título" type="text"></LabelInput>
+      <LabelInput label="Descrição" type="text"></LabelInput>
+      <LabelInput label="Diretor" type="text"></LabelInput>
+      <LabelInput label="Artistas" type="text"></LabelInput>
+      <LabelInput label="Gêneros" type="text"></LabelInput>
+    </div>
+  </div>)
+}
+
+export default MovieNew
+```
+
+4. Adicionar botoes para salvar ou cancelar 
+
+```js
+import React from 'react'
+import Header from '../Components/Header'
+import LabelInput from '../Components/LabelInput'
+import Button from '../Components/Button'
+import './movieNew.css'
+
+const MovieNew = () => {
+  return (<div>
+    <Header></Header>
+    <div className="container new-top">
+      <LabelInput label="Título" type="text"></LabelInput>
+      <LabelInput label="Descrição" type="text"></LabelInput>
+      <LabelInput label="Diretor" type="text"></LabelInput>
+      <LabelInput label="Artistas" type="text"></LabelInput>
+      <LabelInput label="Gêneros" type="text"></LabelInput>
+      <div className="btn-box">
+        <Button className="btn btn-primary">Salvar</Button>
+        <Button className="btn btn-secondary">Cancelar</Button>
+      </div>
+    </div>
+  </div>)
+}
+
+export default MovieNew
+```
+
+> Ajustar btn:last-child e max-width do page movieNew
+
+5. Escurecer header - Receber props para ficar darker
