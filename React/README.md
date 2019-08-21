@@ -662,7 +662,16 @@ width 100%
   display: flex;
   padding: 20px;
   flex-direction: column;
+  margin-bottom: 10px;
 }
+
+.movie-box {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 
 .movie-img {
   width: 100%;
@@ -671,6 +680,10 @@ width 100%
 @media only screen and (min-width: 600px) {
   .container {
     flex-direction: row;
+    padding: 20px;
+  }
+  .movie-box {
+    margin: 0 50px;
   }
 }
 ```
