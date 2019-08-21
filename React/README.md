@@ -190,7 +190,7 @@ export default MovieItem
 
 ```js
 import filme1 from '../assets/imgs/filme1.jpg' 
-import filme2 from '../assets/imgs/filme2.jpg'
+import filme2 from '../assets/imgs/filme2.jpg' 
 
 const movie = {
     id: 1,
@@ -211,7 +211,8 @@ const movie = {
         lastName: 'Sánchez Parra',
         dateOfBirth: '01-01-1990'
     }],
-    image: filme1
+    image: filme1,
+    description: 'Em uma noite escura e chuvosa, um grupo de oitro estranhos fica preso em uma remota estação de ônibus esperando pela condução até a Cidade do México. Coisas estranhas começam a acontecer e eles ficam presos em uma luta pela sobrevivência e sanidade mental.'
 }
 
 const movies = [
@@ -235,7 +236,8 @@ const movies = [
             lastName: 'Bang',
             dateOfBirth: '01-01-1990'
         }],
-        image: filme2
+        image: filme2,
+        description: 'Um gerente de museu está usando de todas as armas possíveis para promover o sucesso de uma nova instalação e decide contratar uma empresa de relações públicas. Porém, isso acaba gerando consequências infelizes e um grande embaraço.'
     }
 ]
 
@@ -300,6 +302,7 @@ function App() {
 export default App;
 
 ```
+Demonstrar no browser 
 
 ## Vamos criar uma visualização para que ao clicar no mais (detalhes do filme) abra uma pagina relativa ao filme
 
@@ -355,7 +358,7 @@ const MovieItem = ({ movie }) => (
       <div className="text-legend">
         <h4>{ movie.title }</h4>
         <h6>
-          { `Dirigido por: ${movie.director}` }
+          { movie.description }
           </h6>
       </div>
       <div className="more-details">
@@ -421,7 +424,192 @@ O botão ficará torto um pouco, vamos arrumar "live"", inspeciona e muda o flex
 
 1. Adicionar o header
 2. Adicionar o hero
-3. Criar um componente de visualização do filme (dar um tempo para o pessoal tentar criar)
+3. Criar um componente de visualização do filme (dar um tempo para o pessoal tentar criar), função simples
 4. Criar estrutura movieDetail
-5. Importar movie detail na page MovieView
 
+```js
+import React from 'react'
+import filme from '../../assets/imgs/filme1.jpg'
+
+const MovieDetail = () => {
+    return (
+        <div className="gallery-container">
+            <img src={filme} alt="imagem filme" ></img>
+        </div>
+    )
+}
+
+export default MovieDetail
+```
+
+5. Importar movie detail na page MovieView
+6. Alterar arquivo de app.js, adicionar MovieView
+
+```js
+import MovieView from './Pages/MovieView'
+
+<Route path="/filme/:id" component={MovieView} />
+```
+
+id é o filme que iremos filtrar no array mockado, futuramente, irá bater diretamente na rota para pegar os detalhes
+7. Alterar o arquivo movieView, importar o mock e alterar para hooks
+
+```js
+import React, { useState, useEffect } from 'react'
+import Header from '../Components/Header'
+import Hero from '../Components/Header/Hero'
+import MovieDetail from '../Components/MovieDetail'
+import { movies } from '../mock'
+
+const MovieView = ({ match }) => {
+    const [movie, setMovie] = useState(null);
+    useEffect(() => {
+        const filtered = movies.filter((movie) => movie.id === parseInt(match.params.id))[0]
+        setMovie(filtered)
+    }, [match.params.id]);
+
+    return (
+        <div>
+            <Header />
+            <Hero />
+            <MovieDetail movie={movie}/>
+        </div>
+    )
+}
+
+export default MovieView
+```
+
+8. Alterar o arquivo movieDetail, para receber os dados por props, editar css
+
+
+```js
+import React from 'react'
+import './movieDetail.css'
+
+const MovieDetail = ({ movie }) => {
+
+  return movie ? (//valider se tem filme
+    <div className="container">
+      <img src={movie.image} alt={movie.title} ></img>
+      <div>
+        <h2>{movie.title}</h2>
+        <p>{movie.description}</p>
+        <p><b>Diretor: </b>{movie.director}</p>
+        <p><b>Artistas: </b>{movie.cast.map(artist => (
+          <span key={artist.id}>{`${artist.firstName} ${artist.lastName}`} / </span>
+        ))}</p>
+        <p><b>Ano de estréia: </b>{movie.director}</p>
+        <p><b>Gêneros: </b>{movie.genres.map(genre => (
+          <span key={genre.id}> {genre.description} /</span>
+        ))}</p>
+      </div>
+    </div>
+  ) : <div>Filme selecionado não encontrado</div>
+}
+
+export default MovieDetail
+```
+
+Alterar arquivo css para adicionar container, distanciar a imagem do texto e cor da fonte
+
+```css
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  padding: 10px;
+}
+
+.movie-box {
+  margin: 0 50px;
+}
+
+.box-title {
+  color: #59398E;
+  font-size: 34px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+```
+
+9. Criar componente de botão para depois importar no arquivo de movieDetail
+
+Dar um tempo para o pessoal criar o componente
+
+/Button/index.js
+```js
+import React from 'react'
+import './button.css'
+
+const Button = ({ children, ...props }) => {
+  return (
+    <button type="button" {...props} >{children}</button>
+  )
+}
+
+export default Button
+```
+
+Criar o css por partes de acordo com o layout
+/Button/button.css
+
+```css
+.btn {
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  flex: 1;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.btn-primary {
+  background-color: #E72F85;
+  color: white;
+}
+
+.btn-secondary {
+  border-color: #E72F85;
+  color: #E72F85;
+}
+```
+
+10. Importar o botao no MovieDetail
+
+```js
+import React from 'react'
+import Button from "../Button";
+import './movieDetail.css'
+
+const MovieDetail = ({ movie }) => {
+
+  return movie ? (
+    <div className="container">
+      <img className="movie-img" src={movie.image} alt={movie.title} ></img>
+      <div className="movie-box">
+        <h2 className="box-title">{movie.title}</h2>
+        <p>{movie.description}</p>
+        <p><b>Diretor: </b>{movie.director}</p>
+        <p><b>Artistas: </b>{movie.cast.map(artist => (
+          <span key={artist.id}>{`${artist.firstName} ${artist.lastName}`} / </span>
+        ))}</p>
+        <p><b>Ano de estréia: </b>{movie.director}</p>
+        <p><b>Gêneros: </b>{movie.genres.map(genre => (
+          <span key={genre.id}> {genre.description} /</span>
+        ))}</p>
+        <div className="btn-box">
+          <Button className="btn btn-primary">Editar</Button>
+          <Button className="btn btn-secondary">Excluir</Button>
+        </div>
+      </div>
+    </div>
+  ) : <div>Filme selecionado não encontrado</div>
+}
+
+export default MovieDetail
+```
+
+### 
