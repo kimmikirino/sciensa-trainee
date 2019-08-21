@@ -688,7 +688,7 @@ width 100%
 }
 ```
 
-12. Adicionar o link para home no logo 
+### Adicionar o link para home no logo 
 
 ./Header
 
