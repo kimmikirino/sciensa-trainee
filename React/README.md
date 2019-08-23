@@ -1285,6 +1285,75 @@ const MovieForm = ({ movie }) => { //linha 6
 
 ```
 
+Alguns campos irão apresentar a informação de forma errada, pq?
+Devido ao tipo de dados, os campos esperam texto, mas são arrays. 
+Vamos ajustar isso.
+
+Criar uma função para concatenar os nomes dos artistas (Cast)
+
+./Components/MovieForm.js
+```js
+const convertCast = (arr) => {
+  let text = ''
+  arr.forEach(element => {
+    text += `${element.firstName} ${element.lastName} / `
+  });
+
+  return text
+}
+```
+
+Atribuir essa função em um novo objeto
+./Components/MovieForm.js
+```js
+const movieCopy = {
+    ...movie,
+    cast: convertCast(movie.cast)
+  }
+
+const [fields, setFields] = useState(movieCopy || { // atribuir o novo objeto
+```
+
+Testar em tela, no campo de Artistas deve mostrar o nome concatenado.
+
+Fazer semelhante para os generos. 15 minutos
+
+./Components/MovieForm.js
+```js
+
+const convertGenres = (arr) => {
+  let text = ''
+  arr.forEach(element => {
+    text += `${element.description} / `
+  });
+
+  return text
+}
+
+const MovieForm = ({ movie }) => {
+
+  const movieCopy = {
+    ...movie,
+    cast: convertCast(movie.cast),
+    genres: convertGenres(movie.genres)
+  }
+
+  const [filename, setFilename] = useState('');
+  const [fields, setFields] = useState(movieCopy || {
+    title: '',
+    description: '',
+    director: '',
+    cast: '',
+    genres: ''
+  });
+
+```
+
+Pronto agora temos os campos certos.
+
+Para criar um novo filme, dará problema, pq?
+
+
 ### Estrutura AXIOS
 
 

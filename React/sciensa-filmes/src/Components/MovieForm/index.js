@@ -3,10 +3,33 @@ import { Link } from "react-router-dom";
 import LabelInput from '../LabelInput'
 import Button from '../Button'
 
+const convertCast = (arr) => {
+  let text = ''
+  arr.forEach(element => {
+    text += `${element.firstName} ${element.lastName} / `
+  });
+
+  return text
+}
+
+const convertGenres = (arr) => {
+  let text = ''
+  arr.forEach(element => {
+    text += `${element.description} / `
+  });
+
+  return text
+}
 const MovieForm = ({ movie }) => {
 
+  const movieCopy = {
+    ...movie,
+    cast: convertCast(movie.cast),
+    genres: convertGenres(movie.genres)
+  }
+
   const [filename, setFilename] = useState('');
-  const [fields, setFields] = useState(movie || {
+  const [fields, setFields] = useState(movieCopy || {
     title: '',
     description: '',
     director: '',
