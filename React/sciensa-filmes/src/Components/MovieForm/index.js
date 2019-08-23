@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import LabelInput from '../LabelInput'
 import Button from '../Button'
-const MovieForm = () => {
+
+const MovieForm = ({ movie }) => {
 
   const [filename, setFilename] = useState('');
-  const [fields, setFields] = useState({
+  const [fields, setFields] = useState(movie || {
     title: '',
     description: '',
     director: '',

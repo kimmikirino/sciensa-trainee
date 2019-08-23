@@ -1261,6 +1261,20 @@ Alterar o método usando o setIsEditing
   } 
 ```
 
+Agora vamos passar por props o movie e importar
+
+MovieView.js
+```js
+<MovieForm movie={movie} /> : //linha 26
+``` 
+
+Alterar o movieForm para receber props
+
+Components/MovieForm.js
+```js
+
+```
+
 ### Estrutura AXIOS
 
 
