@@ -4,10 +4,13 @@ import React from "react";
 // import MovieView from './Pages/MovieView'
 import "./App.css";
 
-import MultiComponentes from "./fundamentals/MultiComponentes";
+// import MultiComponentes from "./fundamentals/MultiComponentes";
+import Lista from "./fundamentals/Lista";
 
 function App() {
-  return <MultiComponentes />;
+  const data = ["ReactJs", "Angular2+", "VueJs", "AngularJs", "EmberJs"];
+
+  return <Lista data={data} />;
 }
 
 export default App;

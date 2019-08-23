@@ -133,3 +133,99 @@ export default () => (
 ```
 
 ### 3.4 - Props
+
+Props são os únicos argumentos que um Componente React pode receber. E significa propriedades. Vamos trabalhar esse conceito melhorando o ComponenteClasse, sem mexer nele. Primeiramente criaremos o componente ItemLista:
+
+```javascript
+import React from "react";
+
+export default props => <li>{props.text}</li>;
+```
+
+Vejam que ele recebeu um propriedade chamada de text. Quem passou essa birosca? Ainda ninguém, vamos criar um componente pai para passar esses detalhes, o Lista.js:
+
+```javascript
+import React from "react";
+import Item from "./ItemLista";
+
+const Lista = props => {
+  const { data } = props;
+
+  return (
+    <ul>
+      {data.map(dataItem => (
+        <Item text={dataItem} />
+      ))}
+    </ul>
+  );
+};
+
+export default Lista;
+```
+
+> Mas alguém passa a propriedade **_data_** para o componente Lista. Vamos mexer no App.js
+
+```javascript
+import Lista from "./fundamentals/Lista";
+
+function App() {
+  const data = ["ReactJs", "Angular2+", "VueJs", "AngularJs", "EmberJs"];
+
+  return <Lista data={data} />;
+}
+
+export default App;
+```
+
+> Mas é possível se comportar que nem o elemento `<li>` mesmo? Sim, vamos lá
+
+Primeiro o pai
+
+```javascript
+<ul>
+  {data.map(dataItem => (
+    <Item>{dataItem}</Item>
+  ))}
+</ul>
+```
+
+Agora vamos mexer no filho
+
+```javascript
+export default props => <li>{props.children}</li>;
+```
+
+Agora ta bom? Não, não está. Vamos melhorar essa bagaça.
+
+```js
+import React from "react";
+import Item from "./ItemLista";
+
+const Lista = props => {
+  const { data } = props;
+
+  const gerarItems = () => {
+    const items = data.map(dataItem => <Item>{dataItem}</Item>);
+
+    return items;
+  };
+
+  return <ul>{gerarItems()}</ul>;
+};
+
+export default Lista;
+```
+
+Agora um exercício rápido:
+
+- Modificar o **_ComponenteFuncao_** para receber um texto por props;
+- Alterar o **_App.js_** para importar também o **_ComponenteFuncao_** passando texto: _Frameworks/Libs Javascript_
+
+### 3.5 - State
+
+Inicialmente devemos entender que para um componente ter estado ele precisa ser declarado como componente de classe. Isso é uma verdade? Não,mas iremos tomar esse verdade para futuramente sim abordar os Hooks.
+
+Vamos criar um novo componente chamado: ComponenteComEstado.js
+
+```js
+```
