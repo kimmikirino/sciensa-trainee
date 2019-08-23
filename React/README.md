@@ -1352,9 +1352,40 @@ const MovieForm = ({ movie }) => {
 Pronto agora temos os campos certos.
 
 Para criar um novo filme, dará problema, pq?
+Pq o objeto está undefined. Vamos passar um objeto vazio.
+
+Page/MovieNew.js
+
+```js
+<MovieForm movie={{}}/>
+```
+
+e no form, vamos colocar um parametro padrão []
+
+```js
+const convertCast = (arr = []) => { //aqui
+  let text = ''
+  arr.forEach(element => {
+    text += `${element.firstName} ${element.lastName} / `
+  });
+
+  return text
+}
+
+const convertGenres = (arr = []) => { //aqui
+  let text = ''
+  arr.forEach(element => {
+    text += `${element.description} / `
+  });
+
+  return text
+}
+```
+
+### Vamos agora criar um evento para o botão excluir (filme)
 
 
-### Estrutura AXIOS
+### AXIOS
 
 
 

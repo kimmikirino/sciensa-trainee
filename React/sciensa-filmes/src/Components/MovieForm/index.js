@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LabelInput from '../LabelInput'
 import Button from '../Button'
 
-const convertCast = (arr) => {
+const convertCast = (arr = []) => {
   let text = ''
   arr.forEach(element => {
     text += `${element.firstName} ${element.lastName} / `
@@ -12,7 +12,7 @@ const convertCast = (arr) => {
   return text
 }
 
-const convertGenres = (arr) => {
+const convertGenres = (arr = []) => {
   let text = ''
   arr.forEach(element => {
     text += `${element.description} / `

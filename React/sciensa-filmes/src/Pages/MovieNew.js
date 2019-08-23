@@ -7,7 +7,7 @@ const MovieNew = () => {
 
   return (<div>
     <Header className="darker"></Header>
-    <MovieForm />
+    <MovieForm movie={{}}/>
   </div>)
 }
 
