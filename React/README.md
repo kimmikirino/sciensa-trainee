@@ -565,6 +565,7 @@ Criar o css por partes de acordo com o layout
   text-transform: uppercase;
   margin-right: 10px;
   background-color: white;
+  border: none;
 }
 
 .btn-primary {
@@ -573,7 +574,7 @@ Criar o css por partes de acordo com o layout
 }
 
 .btn-secondary {
-  border-color: #E72F85;
+  border: 1px solid #E72F85;
   color: #E72F85;
 }
 ```
@@ -898,3 +899,111 @@ export default MovieNew
     background-color: rgba(97, 61, 155, 1);
 }
 ```
+
+### Criar componentes controlados - input type
+
+Forma fácil de fazer é criar um on change para cada input
+
+```js
+import React, { useState } from 'react'
+import Header from '../Components/Header'
+import LabelInput from '../Components/LabelInput'
+import Button from '../Components/Button'
+import './movieNew.css'
+
+const MovieNew = () => {
+
+  const [filename, setFilename] = useState('');
+
+  const handleChange = event => setFilename(event.target.value);
+
+  const handleClickSave = () => console.log(filename)
+
+  return (<div>
+    <Header className="darker"></Header>
+    <div className="container new-top">
+      <LabelInput label="Importar Imagem" type="file" value={filename} onChange={handleChange}></LabelInput>
+      <LabelInput label="Título" type="text"></LabelInput>
+      <LabelInput label="Descrição" type="text"></LabelInput>
+      <LabelInput label="Diretor" type="text"></LabelInput>
+      <LabelInput label="Artistas" type="text"></LabelInput>
+      <LabelInput label="Gêneros" type="text"></LabelInput>
+      <div className="btn-box">
+        <Button className="btn btn-primary" onClick={handleClickSave}>Salvar</Button>
+        <Button className="btn btn-secondary">Cancelar</Button>
+      </div>
+    </div>
+  </div>)
+}
+
+export default MovieNew
+```
+
+Campo com o mesmo tipo, input type="text" dá para utilizar o mesmo método
+É preciso nomear cada campo
+Criar um useState para cada campo, será um objeto
+Criar um handleChangeFields e atribuir cada variável com o eventtargetname, podemos primeiramente ver o que tem dentro do event
+
+```js
+import React, { useState } from 'react'
+import Header from '../Components/Header'
+import LabelInput from '../Components/LabelInput'
+import Button from '../Components/Button'
+import './movieNew.css'
+
+const MovieNew = () => {
+
+  const [filename, setFilename] = useState('');
+  const [fields, setFields] = useState({
+    title: '',
+    description: '',
+    director: '',
+    cast: '',
+    genres: ''
+  });
+
+  const handleChange = event => setFilename(event.target.value);
+
+  const handleChangeFields = event => {
+    const value = event.target.value;
+    setFields({
+      ...fields,
+      [event.target.name]: value
+    });
+  }
+
+  const handleClickSave = () => console.log(filename, fields)
+
+  return (<div>
+    <Header className="darker"></Header>
+    <div className="container new-top">
+      <LabelInput label="Importar Imagem" type="file" value={filename} onChange={handleChange}></LabelInput>
+      <LabelInput label="Título" type="text" name="title" value={fields.title} onChange={handleChangeFields}></LabelInput>
+      <LabelInput label="Descrição" type="text" name="description" value={fields.description} onChange={handleChangeFields}></LabelInput>
+      <LabelInput label="Diretor" type="text" name="director" value={fields.director} onChange={handleChangeFields}></LabelInput>
+      <LabelInput label="Artistas" type="text" name="cast" value={fields.cast} onChange={handleChangeFields}></LabelInput>
+      <LabelInput label="Gêneros" type="text" name="genres" value={fields.genres} onChange={handleChangeFields}></LabelInput>
+      <div className="btn-box">
+        <Button className="btn btn-primary" onClick={handleClickSave}>Salvar</Button>
+        <Button className="btn btn-secondary">Cancelar</Button>
+      </div>
+    </div>
+  </div>)
+}
+
+export default MovieNew
+```
+
+Agora todos os campos estão controlados
+
+
+### Criar evento no botão salvar 
+
+Criar uma função handleClickSave
+e após salvar, apagar os campos e mostrar mensagem de informações foram salvas.
+Não fará chamada API nos dados mockados
+
+
+
+### Estrutura AXIOS
+

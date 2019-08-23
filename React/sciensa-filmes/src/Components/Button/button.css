@@ -7,6 +7,7 @@
   text-transform: uppercase;
   margin-right: 15px;
   background-color: white;
+  border: none;
 }
 
 .btn-primary {
@@ -15,7 +16,7 @@
 }
 
 .btn-secondary {
-  border-color: #E72F85;
+  border: 1px solid #E72F85;
   color: #E72F85;
 }
 
