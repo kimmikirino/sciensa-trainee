@@ -1384,6 +1384,42 @@ const convertGenres = (arr = []) => { //aqui
 
 ### Vamos agora criar um evento para o botão excluir (filme)
 
+Esse botão irá mostrar uma mensagem de filme excluído com sucesso e reencaminhará para a home
+
+Criar a função com alert
+/Component/MovieDetail.js
+
+```js
+const deleteFilm = () => {
+    alert('Filme excluído com sucesso')
+  }
+```
+
+E chamar a função no onclick do botão
+
+```js
+<Button className="btn btn-secondary" onClick={deleteFilm}>Excluir</Button>
+```
+
+Para podermos mudar de rota programaticamente, vamos utilizar um método do react-router-dom 
+
+```js
+import { withRouter } from 'react-router-dom';
+
+// no export vamos utiliza-lo
+export default withRouter(MovieDetail)
+```
+
+Com isso podemos usar o props "history"
+
+```js
+const MovieDetail = ({ movie, handleEdit, history }) => {
+
+  const deleteFilm = () => {
+    alert('Filme excluído com sucesso')
+    history.push('/') //isso faz com que encaminha para a home
+  }
+```
 
 ### AXIOS
 
