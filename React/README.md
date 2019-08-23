@@ -1272,6 +1272,16 @@ Alterar o movieForm para receber props
 
 Components/MovieForm.js
 ```js
+const MovieForm = ({ movie }) => { //linha 6
+
+  const [filename, setFilename] = useState('');
+  const [fields, setFields] = useState(movie || {
+    title: '',
+    description: '',
+    director: '',
+    cast: '',
+    genres: ''
+  });
 
 ```
 
