@@ -15,6 +15,8 @@ const MovieNew = () => {
     genres: ''
   });
 
+  const [message, setMessage] = useState('');
+
   const handleChange = event => setFilename(event.target.value);
 
   const handleChangeFields = event => {
@@ -25,7 +27,24 @@ const MovieNew = () => {
     });
   }
 
-  const handleClickSave = () => console.log(filename, fields)
+  const handleClickSave = () => {
+    //Aqui teria uma chamada para o back para salvar as infos
+
+    //Apagar informações do form
+    setFilename('')
+    //Vamos utilizar as informações dos estados para apagar os dados de formulário, podemos apenas copiar e colar as informações zeras, ou
+    // criar uma variável com essas informações zeradas e atribuir, no caso vamos copiar e colar.
+    setFields({
+      title: '',
+      description: '',
+      director: '',
+      cast: '',
+      genres: ''
+    })
+
+    // aqui haverá uma validação dos campos se necessário   
+    setMessage('Filme criado com sucesso! :)') 
+  }
 
   return (<div>
     <Header className="darker"></Header>
@@ -40,6 +59,7 @@ const MovieNew = () => {
         <Button className="btn btn-primary" onClick={handleClickSave}>Salvar</Button>
         <Button className="btn btn-secondary">Cancelar</Button>
       </div>
+      <span>{message}</span>
     </div>
   </div>)
 }
