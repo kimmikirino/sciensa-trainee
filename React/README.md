@@ -1202,7 +1202,64 @@ const MovieNew = () => {
 export default MovieNew
 ```
 
+Agora vamos criar uma condição para chamar o formulário na página ao clicar em editar e voltar ao clicar em cancelar
 
+Page/MovieView.js
+```js
+import React, { useState, useEffect } from 'react'
+import Header from '../Components/Header'
+import Hero from '../Components/Header/Hero'
+import MovieDetail from '../Components/MovieDetail'
+import MovieForm from '../Components/MovieForm'
+import { movies } from '../mock'
+
+const MovieView = ({ match }) => {
+  const [movie, setMovie] = useState(null);
+  const [isEditing, setIsEditing] = useState(false); //cria 
+
+  const handleEdit = () => {
+    console.log('alo') //testa com console log
+  } //cria novo metodo
+  useEffect(() => {
+    const filtered = movies.filter((movie) => movie.id === parseInt(match.params.id))[0]
+    setMovie(filtered)
+  }, [match.params.id]);
+
+  return (
+    <div>
+      <Header />
+      <Hero />
+      {
+        isEditing ?
+          <MovieForm movie={movie} /> :
+          <MovieDetail movie={movie} handleEdit={handleEdit} /> // passa por parametro
+      }
+    </div>
+  )
+}
+
+export default MovieView
+```
+
+importa o método handleEdit e atribui no botão editar
+
+```js
+const MovieDetail = ({ movie, handleEdit }) => {
+
+  <Button className="btn btn-primary" onClick={handleEdit}>Editar</Button>
+
+```
+
+Dentro de handleEdit, como podemos fazer para alterar a variavel isEditing?
+
+Aguardar
+
+Alterar o método usando o setIsEditing
+```js
+  const handleEdit = () => { //linha 12
+    setIsEditing(!isEditing)
+  } 
+```
 
 ### Estrutura AXIOS
 

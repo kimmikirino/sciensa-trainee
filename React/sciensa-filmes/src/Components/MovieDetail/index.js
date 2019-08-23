@@ -2,7 +2,7 @@ import React from 'react'
 import Button from "../Button";
 import './movieDetail.css'
 
-const MovieDetail = ({ movie }) => {
+const MovieDetail = ({ movie, handleEdit }) => {
 
   return movie ? (
     <div className="container">
@@ -19,7 +19,7 @@ const MovieDetail = ({ movie }) => {
           <span key={genre.id}> {genre.description} /</span>
         ))}</p>
         <div className="btn-box">
-          <Button className="btn btn-primary">Editar</Button>
+          <Button className="btn btn-primary" onClick={handleEdit}>Editar</Button>
           <Button className="btn btn-secondary">Excluir</Button>
         </div>
       </div>
