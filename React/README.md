@@ -1095,5 +1095,23 @@ const MovieNew = () => {
 export default MovieNew
 ```
 
+### Botão cancelar
+
+O que vcs acham que podemos fazer no botão cancelar?
+
+Vamos fazer com que esse botão volte para a home. Como podemos fazer isso? Esperar a resposta
+Para facilitar, vamos adicionar um componente Link e colocar as classes do botão
+
+```js
+import { Link } from "react-router-dom";
+<Link className="btn btn-secondary" to='/'>Cancelar</Link>
+```
+
+### Agora vamos aplicar a mesma estrutura para edição dos campos 
+
+Vamos primeiro encaminhar o botão editar
+
 ### Estrutura AXIOS
+
+
 

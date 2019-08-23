@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from "react-router-dom";
 import Header from '../Components/Header'
 import LabelInput from '../Components/LabelInput'
 import Button from '../Components/Button'
@@ -57,7 +58,7 @@ const MovieNew = () => {
       <LabelInput label="Gêneros" type="text" name="genres" value={fields.genres} onChange={handleChangeFields}></LabelInput>
       <div className="btn-box">
         <Button className="btn btn-primary" onClick={handleClickSave}>Salvar</Button>
-        <Button className="btn btn-secondary">Cancelar</Button>
+        <Link className="btn btn-secondary" to='/'>Cancelar</Link>
       </div>
       <span>{message}</span>
     </div>
