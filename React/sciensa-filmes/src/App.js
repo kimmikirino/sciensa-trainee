@@ -5,12 +5,13 @@ import React from "react";
 import "./App.css";
 
 // import MultiComponentes from "./fundamentals/MultiComponentes";
-import Lista from "./fundamentals/Lista";
+// import Lista from "./fundamentals/Lista";
+import ComponenteComEstado from "./fundamentals/ComponenteComEstado";
 
 function App() {
   const data = ["ReactJs", "Angular2+", "VueJs", "AngularJs", "EmberJs"];
 
-  return <Lista data={data} />;
+  return <ComponenteComEstado />;
 }
 
 export default App;

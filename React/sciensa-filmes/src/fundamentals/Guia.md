@@ -228,4 +228,136 @@ Inicialmente devemos entender que para um componente ter estado ele precisa ser 
 Vamos criar um novo componente chamado: ComponenteComEstado.js
 
 ```js
+import React from "react";
+
+class ComponenteComEstado extends React.Component {
+  render() {
+    return (
+      <div style={{ padding: 10 }}>
+        <div
+          style={{
+            width: 400,
+            height: 20,
+            padding: 10,
+            backgroundColor: "lightGray"
+          }}
+        />
+        <button type="button">Abrir</button>
+        <button type="button">Fechar</button>
+      </div>
+    );
+  }
+}
+
+export default ComponenteComEstado;
 ```
+
+Vamos colocar um Estado nele, e usá-lo no contexto do componente. Primeiramente o constructor:
+
+```javascript
+constructor(props){
+  super(props)
+}
+```
+
+> Esse super é OBRIGATÓRIO. Nunca esqueçam isso.
+
+Agora o estado:
+
+```js
+class ComponenteComEstado extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      infoText: "Componente fechado",
+      height: 20
+    };
+  }
+
+  render() {
+    return (
+      <div style={{ padding: 10 }}>
+        <div
+          style={{
+            width: 400,
+            height: this.state.height,
+            padding: 10,
+            backgroundColor: "lightGray"
+          }}
+        >
+          {this.state.infoText}
+        </div>
+        <button type="button">Abrir</button>
+        <button type="button">Fechar</button>
+      </div>
+    );
+  }
+}
+```
+
+Vamos modificá-lo então:
+
+```js
+import React from "react";
+
+class ComponenteComEstado extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      infoText: "Componente fechado",
+      height: 20
+    };
+  }
+
+  open = () => {
+    this.setState({ height: 200, infoText: "Componente Aberto" });
+  };
+
+  close = () => {
+    this.setState({ height: 30, infoText: "Componente fechado" });
+  };
+
+  render() {
+    return (
+      <div style={{ padding: 10 }}>
+        <div
+          style={{
+            width: 400,
+            height: this.state.height,
+            padding: 10,
+            backgroundColor: "lightGray"
+          }}
+        >
+          {this.state.infoText}
+        </div>
+        <button type="button" onClick={() => this.open()}>
+          Abrir
+        </button>
+        <button type="button" onClick={() => this.close()}>
+          Fechar
+        </button>
+      </div>
+    );
+  }
+}
+
+export default ComponenteComEstado;
+```
+
+> Agora será necessário o **_this_** e o **_onClick_**
+
+```js
+<button type="button" onClick={this.open()}> // Aqui entramos em loop infinito
+```
+
+```js
+<button type="button" onClick={this.open}> // Assim pode, mas perdemos a possibilidade de passar algum parametro
+```
+
+> É necessário falar sobre o ciclo de vida do ReactJs. O **_setState_** sempre chama o render, assim como o props.
+
+> Modificar o **_state_** ou o **_props_** sempre CHAMARÁ o Render novamente
+
+### 4 - Precisamos falar sobre Ciclo de vida
