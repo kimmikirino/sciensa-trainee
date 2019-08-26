@@ -1,0 +1,26 @@
+.btn {
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  flex: 1;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 15px;
+  background-color: white;
+  border: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #E72F85;
+  color: white;
+}
+
+.btn-secondary {
+  border: 1px solid #E72F85;
+  color: #E72F85;
+}
+
+.btn:last-child {
+  margin-right: 0;
+}

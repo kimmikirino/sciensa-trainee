@@ -1,18 +1,20 @@
 import React from "react";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
-// import Main from './Pages/Main'
-// import MovieView from './Pages/MovieView'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Main from "./Pages/Main";
+import MovieView from "./Pages/MovieView";
+import MovieNew from "./Pages/MovieNew";
 import "./App.css";
 
-// import MultiComponentes from "./fundamentals/MultiComponentes";
-// import Lista from "./fundamentals/Lista";
-// import ComponenteComEstado from "./fundamentals/ComponenteComEstado";
-import ComponenteControlado from "./fundamentals/ComponenteControlado";
-
 function App() {
-  // const data = ["ReactJs", "Angular2+", "VueJs", "AngularJs", "EmberJs"];
-
-  return <ComponenteControlado />;
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Main} />
+        <Route path="/filme/novo" component={MovieNew} />
+        <Route path="/filme/:id" component={MovieView} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

@@ -336,7 +336,6 @@ console.log(reais)
 
 filter, reduce, join, splice, concat, etc.
 
-```
 ## Bonus
 
 Se der tempo: 

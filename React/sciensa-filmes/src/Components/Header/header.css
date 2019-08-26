@@ -8,6 +8,10 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.fixed-menu.darker {
+    background-color: rgba(97, 61, 155, 1);
+}
   
 .fixed-menu div {
     margin: 10px;
