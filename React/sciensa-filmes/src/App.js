@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Main from './Pages/Main'
-import MovieView from './Pages/MovieView'
-import MovieNew from './Pages/MovieNew'
-import './App.css'
+import Main from "./Pages/Main";
+import MovieView from "./Pages/MovieView";
+import MovieNew from "./Pages/MovieNew";
+import "./App.css";
 
 function App() {
   return (
