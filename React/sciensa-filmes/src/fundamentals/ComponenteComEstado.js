@@ -10,6 +10,16 @@ class ComponenteComEstado extends React.Component {
     };
   }
 
+  componentDidMount() {
+    console.log("--- Passou no componentDidMount ---");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.text !== this.props.text && prevState.height !== 20) {
+      this.close();
+    }
+  }
+
   open = () => {
     // O setState SEMPRE chama o render novamente
     this.setState({ height: 200, infoText: "Componente Aberto" });
@@ -17,21 +27,24 @@ class ComponenteComEstado extends React.Component {
 
   close = () => {
     // O setState SEMPRE chama o render novamente
-    this.setState({ height: 30, infoText: "Componente fechado" });
+    this.setState({ height: 20, infoText: "Componente fechado" });
   };
 
   render() {
+    console.log("-- Passou no render do ComponenteComEstado --");
     return (
-      <div style={{ padding: 10 }}>
+      <div>
         <div
           style={{
             width: 400,
             height: this.state.height,
             padding: 10,
-            backgroundColor: "lightGray"
+            backgroundColor: "lightGray",
+            overflow: "hidden"
           }}
         >
           {this.state.infoText}
+          <p>{this.props.text}</p>
         </div>
         <button type="button" onClick={this.open}>
           Abrir

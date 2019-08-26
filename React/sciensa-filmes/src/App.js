@@ -6,12 +6,13 @@ import "./App.css";
 
 // import MultiComponentes from "./fundamentals/MultiComponentes";
 // import Lista from "./fundamentals/Lista";
-import ComponenteComEstado from "./fundamentals/ComponenteComEstado";
+// import ComponenteComEstado from "./fundamentals/ComponenteComEstado";
+import ComponenteControlado from "./fundamentals/ComponenteControlado";
 
 function App() {
-  const data = ["ReactJs", "Angular2+", "VueJs", "AngularJs", "EmberJs"];
+  // const data = ["ReactJs", "Angular2+", "VueJs", "AngularJs", "EmberJs"];
 
-  return <ComponenteComEstado />;
+  return <ComponenteControlado />;
 }
 
 export default App;

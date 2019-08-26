@@ -221,7 +221,7 @@ Agora um exercício rápido:
 - Modificar o **_ComponenteFuncao_** para receber um texto por props;
 - Alterar o **_App.js_** para importar também o **_ComponenteFuncao_** passando texto: _Frameworks/Libs Javascript_
 
-### 3.5 - State
+### 3.5 - State Component
 
 Inicialmente devemos entender que para um componente ter estado ele precisa ser declarado como componente de classe. Isso é uma verdade? Não,mas iremos tomar esse verdade para futuramente sim abordar os Hooks.
 
@@ -360,4 +360,129 @@ export default ComponenteComEstado;
 
 > Modificar o **_state_** ou o **_props_** sempre CHAMARÁ o Render novamente
 
-### 4 - Precisamos falar sobre Ciclo de vida
+## 4 - Precisamos falar sobre Ciclo de vida
+
+Aqui neste passo vamos ver o comportamento dos componentes em seu ciclos de vida, recebendo props e chamando o Render, e para isso iremos criar o ComponenteControlado:
+
+```js
+import React from "react";
+import ComponenteComEstado from "./ComponenteComEstado";
+
+class ComponenteControlado extends React.Component {
+  state = {
+    inputValue: ""
+  };
+
+  render() {
+    return (
+      <div style={{ padding: 10 }}>
+        <h2>Insira o Texto do Painel</h2>
+        <input type="text" placeholder="Insira do texto ..." />
+        <br />
+        <br />
+        <ComponenteComEstado />
+      </div>
+    );
+  }
+}
+
+export default ComponenteControlado;
+```
+
+> Porra Pará, que diabos é esse estado escrito dessa forma. O create-react-app utiliza um lib chamada **_react-alternative-class-component-syntax_** que, no caso, nos permite escrever o estado com componente dessa forma mais simplória.
+
+> Temos um problema aqui que é o fato do input ser um uncontrolled component. Vamos controla-lo então:
+
+```js
+<input
+  type="text"
+  placeholder="Insira do texto ..."
+  value={this.state.inputValue}
+/>
+```
+
+> Po lega, Pará, agora eu não consigo nem editar o input. Agora é hora de falar sobre o oneWayDataBind. E vamos corrigir:
+
+```js
+<input
+  type="text"
+  placeholder="Insira do texto ..."
+  value={this.state.inputValue}
+  onChange={event => this.setState({ inputValue: event.target.value })}
+/>
+```
+
+Vamos colocar um console.log logo ao abrir o Render() para avaliarmos as chamadas no mesmo:
+
+```js
+render() {
+  console.log("render", this.state)
+  return ();
+}
+```
+
+Vamos fazer os componentes interagirem e dessa forma enteder os ciclo de vida dos mesmo:
+
+Primeiro no ComponenteControlado:
+
+```js
+<ComponenteComEstado text={this.state.inputValue} />
+```
+
+Agora no componenteComEstado:
+
+```js
+<div
+  style={{
+    width: 400,
+    height: this.state.height,
+    padding: 10,
+    backgroundColor: "lightGray",
+    overflow: "hidden"
+  }}
+>
+  {this.state.infoText}
+  <p>{this.props.text}</p>
+</div>
+```
+
+### 4.1 - Métodos do ciclo de vida componente
+
+Vamos explicar os mais utilizados:
+
+#### 4.1.1 - componentDidMount
+
+É chamado assim que o componente é montado na árvore de componente, normalmente chamado apenas um vez. Ótimo lugar para se chamar os endpoints. Vamos testá-lo alterando o ComponenteComEstado:
+
+```js
+componentDidMount() {
+  console.log("--- Passou no componentDidMount ---");
+}
+```
+
+Notaremos que mesmo modificando o Props ou o Estado, está função só foi chamada a primeira quando foi montada na tela.
+
+#### 4.1.2 - componentDidUpdate
+
+Esse é o método que é chamado toda vez que o componente tem mudança no seu props. Este é um método que todo cuidado é pouco. Pq? Porque vc pode estar criando um loop infinito. ENTÃO CUIDADO PORRA!!!
+
+Vamos modificar o ComponenteComEstado:
+
+```js
+componentDidUpdate(prevProps, prevState) {
+  if (prevProps.text !== this.props.text && prevState.height !== 20) {
+    this.close();
+  }
+}
+
+render() {
+  console.log("-- Passou no render do ComponenteComEstado --");
+  return (
+    ...
+  )
+}
+```
+
+> Vamos notar que quando o painel está aberto, ele é chamado duas vezes. Uma ao recebe a props e outra ao modificar o State. Pro usuário isso não será visível pq é feito por stack e executará para o usuário o último estado. Entretando modificar o State por meio de props é um PÉSSIMA pratica. Só estamos usando aqui para exemplificar.
+
+## 5 - Hooks
