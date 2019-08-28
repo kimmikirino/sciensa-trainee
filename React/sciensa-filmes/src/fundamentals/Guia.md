@@ -315,6 +315,7 @@ class ComponenteComEstado extends React.Component {
     this.setState({ height: 200, infoText: "Componente Aberto" });
   };
 
+  // Fica como exercício
   close = () => {
     this.setState({ height: 30, infoText: "Componente fechado" });
   };
@@ -485,4 +486,159 @@ render() {
 
 > Vamos notar que quando o painel está aberto, ele é chamado duas vezes. Uma ao recebe a props e outra ao modificar o State. Pro usuário isso não será visível pq é feito por stack e executará para o usuário o último estado. Entretando modificar o State por meio de props é um PÉSSIMA pratica. Só estamos usando aqui para exemplificar.
 
-## 5 - Hooks
+## 5 - ECMA e módulos
+
+Vamos falar mais a respeito de imports e exports. Para isso, vamos criar os seguintes componentes _ComponenteImportador_ e o _ComponenteExportador_
+
+Primeiro o _ComponenteExportador_
+
+```js
+import React from "react";
+
+const Comp1 = () => <p>Componente1</p>;
+const Comp2 = () => <p>Componente2</p>;
+const Comp3 = () => <p>Componente3</p>;
+```
+
+Como poderiamos importá-los no _ComponenteImportador_?
+
+> Teste com 3 linhas de export, uma para cada componente. Teste export default em cada uma das linhas
+
+Respondendo:
+
+```js
+export default Comp1;
+export { Comp2, Comp3 };
+
+export { Comp1, Comp2, Comp3 };
+
+```
+
+O _ComponenteImportador_ ficaria assim:
+
+```js
+import Compo1, { Comp2, Comp3 } from "./ComponenteExportador";
+```
+
+Vamos agora dar uns apelidos carinhosos para eles:
+
+```js
+import {
+  default as amigoFeliz,
+  Comp2 as amigoLegal,
+  Comp3 as amigoIdiota
+} from "./ComponenteExportador";
+```
+
+## 6 - Hooks
+
+Hooks é uma feature que veio na versão 16.8 do React. O intuito final mesmo é dar a capacidade de ter as mesmas possibilidades de estado e ciclo de vida dos class components. Logo tudo que a gente vinha falando que só era possível no classcomponents cai por terra. Melhor, o Hooks ainda nos amplia em possibilidades.
+
+> Hooks então são componentes de função que utilizam recursos do de classe. NÃO. Hooks são funções que simulam a mesma funcionalidade de algum recurso do classcomponente ou mesmo uma nova funcionalidade não existente;
+
+**_MOTIVAÇÃO:_** Um melhor compartilhamento de lógica de estado, dessa forma conseguiremos melhore reutilizar os componentes. Hoje, na prática, utilizávamos muito High Order Components. A partir de agora a ideia é acabar com esses caras, até pq o Hooks nos é permitido criar nossos próprios hooks.
+
+### 6.1 - useState
+
+Vamos ao primeiro componente utilizando hooks. Vamos criar o componente _ComponenteComHooks_:
+
+```js
+import React, { useState } from "react";
+
+export default () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Você clicou {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Clica aqui</button>
+    </div>
+  );
+};
+```
+
+Vamos criar outros estados só para a gente entender:
+
+```js
+import React, { useState } from "react";
+
+export default () => {
+  const [count, setCount] = useState(0);
+  const [initialText, setInitialText] = useState("Fala doido! ");
+  const [crazyObject, setCrazyObject] = useState({ attr1: "Parabéns" });
+
+  return (
+    <div>
+      <h1>{crazyObject.attr1}</h1>
+      <p>
+        {initialText}Você clicou {count} times
+      </p>
+      <button onClick={() => setCount(count + 1)}>Clica aqui</button>
+    </div>
+  );
+};
+```
+
+### 6.2 - useEffect
+
+É o hooks para nos permitir usar o **_componentDidMount_**, **_componentDidUnmount_** e o **_componentDidUpdate_**
+
+```js
+import React, { useState, useEffect } from "react";
+
+export default () => {
+  const [count, setCount] = useState(0);
+  const [initialText, setInitialText] = useState("Fala doido! ");
+  const [crazyObject, setCrazyObject] = useState({ attr1: "Parabéns" });
+
+  useEffect(() => {
+    // Atualiza o título do documento utilizando a API do navegador
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <h1>{crazyObject.attr1}</h1>
+      <p>
+        {initialText}Você clicou {count} times
+      </p>
+      <button onClick={() => setCount(count + 1)}>Clica aqui</button>
+    </div>
+  );
+};
+```
+
+Simulando melhor o Mount e Unmount:
+
+```js
+useEffect(() => {
+  console.log("passou no useEffect");
+  document.title = `You clicked ${count} times`;
+});
+
+useEffect(() => {
+  console.log("Aqui monta");
+
+  return function cleanup() {
+    console.log("aqui desmonta");
+  };
+}, []);
+```
+
+Vamos criar outro componente chamado ComponenteComHooksPai.js:
+
+```js
+function ComponenteComHooksPai() {
+  const [shouldRender, setShouldRender] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShouldRender(false);
+    }, 5000);
+  }, []);
+
+  return shouldRender ? <ForExample /> : null;
+}
+```
+
+Fica como exercicio agora modificar o ComponenteComEstado em um ComponenteComHooks: ComponenteComEstadoEHooks
