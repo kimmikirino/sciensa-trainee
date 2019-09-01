@@ -5,10 +5,10 @@ import './movieItem.css'
 //usar destructuring e template literals
 const MovieItem = ({ movie }) => (
   <div>
-    <img src={movie.image} alt={movie.title} />
+    <img src={movie.photo} alt={movie.name} />
     <div className="img-legend">
       <div className="text-legend">
-        <h4>{movie.title}</h4>
+        <h4>{movie.name}</h4>
         <h6>
           {movie.description}
         </h6>

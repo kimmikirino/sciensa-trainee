@@ -3,18 +3,22 @@ import Header from '../Components/Header'
 import Hero from '../Components/Header/Hero'
 import MovieDetail from '../Components/MovieDetail'
 import MovieForm from '../Components/MovieForm'
-import { movies } from '../mock'
+import { getMovieById } from '../API/Movies'
+// import { movies } from '../mock'
 
 const MovieView = ({ match }) => {
   const [movie, setMovie] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEdit = () => {
-    setIsEditing(!isEditing)
+    //Edição desabilitada
+    // setIsEditing(!isEditing)
   }
+
   useEffect(() => {
-    const filtered = movies.filter((movie) => movie.id === parseInt(match.params.id))[0]
-    setMovie(filtered)
+    getMovieById(match.params.id).then(({ data }) => {
+      setMovie(data)
+    })
   }, [match.params.id]);
 
   return (
